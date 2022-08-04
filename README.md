@@ -1,27 +1,40 @@
 
 
-## MY ZURI LARAVEL CRUD PROJECT
+## MY ZURI PHP-User-Authentication-API
 
-PREVIOUSLY INSIDE /ZURI/zuriLaravel.git now inside the ZURI.git
+Describe what the project does;
 
-THIS PROJECT HANDLES REGISTRATION, INSERT DELETE AND EDIT BASIC OPERATIONS FOR A USER d
-
-
+THIS PROJECT HANDLES REGISTRATION, LOGIN, INSERT DELETE AND EDIT BASIC OPERATIONS FOR A USER 
 
 ## Features include 
 
 
-## ADD USER 
-available at /createuser
-Add User by simply filling the form below 
+## REGISTER USER 
+Available at /create
+Registers User by simply filling the form
+
+## LOGINS USER 
+Available at /user/login
+Logs in User by simply filling the form
 
 
-## FIND USER BY ID 
-available at /find_known_user and /find_known_user/id where id is the id number of the user.
-IF YOU KNOW the user id u can enter the id to fetch the asssociated user then continue with edit or delete .
+## FINDS USER BY ID 
+available at /users/{id}
+When the user id is known you can enter the id to fetch the asssociated user.
 
-## show all users 
-available at /users also gives you options of editing and deleting users
+## UPDATES USER BY ID 
+available at /update/{id}
+When the user id is known you can enter the id to fetch the asssociated user then continue with edit.
+
+
+## GETS ALL USERS
+available at /users
+Gets all users
+
+## DELETES USERS
+available at /delete/{id}
+Gets all users and also gives you options of editing and deleting users
+
 
 
 

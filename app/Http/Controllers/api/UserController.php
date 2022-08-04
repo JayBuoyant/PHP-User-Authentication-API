@@ -119,7 +119,8 @@ class UserController extends Controller
                 $feedback = array("message"=>"User Session Already Created");
                 return response()->json($feedback); 
             }
-            else {
+            else 
+            {
                 $request->session()->put('user',$user->email);
                 $feedback = array("message"=>"User Session Created");
                 return response()->json($feedback); 
