@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 
 class UserController extends Controller
 {
@@ -113,9 +114,17 @@ class UserController extends Controller
 
         if (isset($user->email) && $user->password==md5($request->password))
         {
-            $request->session()->put('user',$user->email);
-            $feedback = array("message"=>"User Session Created");
-            return response()->json($feedback); 
+            if (Session::has('user') && Session::get('user')==$user->email)
+            {
+                $feedback = array("message"=>"User Session Already Created");
+                return response()->json($feedback); 
+            }
+            else {
+                $request->session()->put('user',$user->email);
+                $feedback = array("message"=>"User Session Created");
+                return response()->json($feedback); 
+            }
+            
         }   
 
         else
