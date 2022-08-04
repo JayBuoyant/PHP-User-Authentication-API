@@ -92,7 +92,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         //logs in user
-        $user = User::where('email',$request->email)->get() ; // returns an array containing user with request email
+        $user = User::where('email',$request->email)->first() ; 
         //return response()->json($user);
         //return gettype($user);
         //return gettype(response()->json($user));
@@ -103,7 +103,7 @@ class UserController extends Controller
             'email' => 'required'
         ]);
 
-        if (!isset($user[0]->email))
+        if (!isset($user->email))
         {
             $feedback = array("message"=>"the email does not exist with us");
             return response()->json($feedback);
@@ -111,9 +111,9 @@ class UserController extends Controller
            
             
 
-        if (isset($user[0]->email) && $user[0]->password==md5($request->password))
+        if (isset($user->email) && $user->password==md5($request->password))
         {
-            $request->session()->put('user',$user[0]->email);
+            $request->session()->put('user',$user->email);
             $feedback = array("message"=>"User Session Created");
             return response()->json($feedback); 
         }   
