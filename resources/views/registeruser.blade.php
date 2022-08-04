@@ -21,7 +21,7 @@
         {{ session('success') }}  for user with id {{session('id') }} KEEP YOUR ID SAFE
     </div>
 @endif
-<form action= "/registeruser" method = "post">
+<form action= "/register" method = "post">
     @csrf 
   <div class="form-group">
     <label for="exampleInputName">Name</label>
@@ -34,11 +34,11 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword">Password</label>
-    <input type="number" name="phone" class="form-control" id="exampleInputPhoneNumber1" placeholder="Enter password" required>
+    <input type="password" name="password" class="form-control" id="exampleInputPhoneNumber1" placeholder="Enter password" required>
   </div>
   <div class="form-group">
     <label for="exampleInputRepeatPassword">Repeat Password</label>
-    <input type="number" name="phone" class="form-control" id="exampleInputPhoneNumber1" placeholder="Repeat password" required>
+    <input type="password" name="repeat-password" class="form-control" id="exampleInputPhoneNumber1" placeholder="Repeat password" required>
   </div>
   <!-- <div class="form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">

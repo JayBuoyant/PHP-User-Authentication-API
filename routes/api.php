@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/create',[UserController::class, 'register']);
+Route::post('/create/car',[CarController::class, 'register']);
+
+Route::get('/users',[UserController::class, 'getusers']);
+Route::get('/cars',[CarController::class, 'getcars']);
+
+
+Route::get('/users/{id}',[UserController::class, 'getuser']);
+
+Route::post('/update/{id}',[UserController::class, 'update']);
+Route::post('/user/login',[UserController::class, 'login']);
+
+
+//Route::get('/users/login',[UserController::class, 'login']);
+
