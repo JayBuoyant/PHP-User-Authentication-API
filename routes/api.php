@@ -29,6 +29,8 @@ Route::get('/users/{id}',[UserController::class, 'getuser']);
 
 Route::post('/update/{id}',[UserController::class, 'update']);
 Route::post('/delete/{id}',[UserController::class, 'delete']);
+Route::get('/delete/{id}',[UserController::class, 'delete']);
+
 
 
 Route::middleware('api-session')->post('/user/login',[UserController::class, 'login']);
