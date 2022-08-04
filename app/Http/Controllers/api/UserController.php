@@ -112,7 +112,11 @@ class UserController extends Controller
             
 
         if (isset($user[0]->email) && $user[0]->password==md5($request->password))
-            return response()->json($user);
+        {
+            $request->session()->put('user',$user[0]->email);
+            $feedback = array("message"=>"User Session Created");
+            return response()->json($feedback); 
+        }   
 
         else
         {

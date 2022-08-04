@@ -31,7 +31,7 @@ Route::post('/update/{id}',[UserController::class, 'update']);
 Route::post('/delete/{id}',[UserController::class, 'delete']);
 
 
-Route::post('/user/login',[UserController::class, 'login']);
+Route::middleware('api-session')->post('/user/login',[UserController::class, 'login']);
 
 
 //Route::get('/users/login',[UserController::class, 'login']);
