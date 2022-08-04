@@ -21,15 +21,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/create',[UserController::class, 'register']);
-Route::post('/create/car',[CarController::class, 'register']);
 
 Route::get('/users',[UserController::class, 'getusers']);
-Route::get('/cars',[CarController::class, 'getcars']);
 
 
 Route::get('/users/{id}',[UserController::class, 'getuser']);
 
 Route::post('/update/{id}',[UserController::class, 'update']);
+Route::post('/delete/{id}',[UserController::class, 'delete']);
+
+
 Route::post('/user/login',[UserController::class, 'login']);
 
 

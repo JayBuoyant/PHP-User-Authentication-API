@@ -59,8 +59,13 @@ class UserController extends Controller
         //finds user with a specific user and deletes id'd user then returns response as a json
         $user = User::find($id);
         $user->delete();
+        
+        // set feedback message in assocuative array
+        $feedback = array("message"=>"Item Deleted Successfullly");
+        //json_encode($feedback);
 
-        return response()->json($user::all());
+        //convert array to JSON format 
+        return response()->json($feedback);
     }
 
     
@@ -91,7 +96,7 @@ class UserController extends Controller
         //return response()->json($user);
         //return gettype($user);
         //return gettype(response()->json($user));
-        //return $user[0]->password." JOIN  ".md5($request->password);
+        //return $user[0]->password."   ".md5($request->password);
         
         $request->validate([
             'password' => 'required',
@@ -99,12 +104,21 @@ class UserController extends Controller
         ]);
 
         if (!isset($user[0]->email))
-            return "the email does not exist with us";
+        {
+            $feedback = array("message"=>"the email does not exist with us");
+            return response()->json($feedback);
+        }
+           
+            
 
         if (isset($user[0]->email) && $user[0]->password==md5($request->password))
             return response()->json($user);
+
         else
-            return "WRONG PASSWORD";
+        {
+            $feedback = array("message"=>"INCORRECT PASSWORD FOR EMAIL");
+            return response()->json($feedback);
+        }
     }
 
   
